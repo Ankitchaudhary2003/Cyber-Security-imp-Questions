@@ -253,8 +253,96 @@ In summary, Type 1 uses ODBC, Type 2 uses native APIs, Type 3 goes through a mid
 **RMI (Remote Method Invocation):**
 
 1. What is RMI in Java? How does it enable distributed computing?
+  RMI stands for Remote Method Invocation, and it's a Java API that allows objects running in one Java Virtual Machine (JVM) to invoke methods on objects running in another JVM, as if they were local objects. RMI enables distributed computing by providing a way for Java programs to communicate and collaborate across different machines on a network.
 2. Describe the architecture of RMI in Java.
 3. Can you outline the steps involved in creating a simple client/server application using RMI? Provide examples.
+  Sure, here's a simplified version:
+
+1. **Define Remote Interface**:
+   - Create an interface extending `java.rmi.Remote`.
+   - Declare methods to be invoked remotely.
+
+Example:
+```java
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Hello extends Remote {
+    String sayHello() throws RemoteException;
+}
+```
+
+2. **Implement Remote Object**:
+   - Create a class implementing the remote interface.
+   - Extend `java.rmi.server.UnicastRemoteObject`.
+   - Implement methods declared in the interface.
+
+Example:
+```java
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class HelloImpl extends UnicastRemoteObject implements Hello {
+    protected HelloImpl() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public String sayHello() throws RemoteException {
+        return "Hello, world!";
+    }
+}
+```
+
+3. **Create Server**:
+   - Instantiate the remote object.
+   - Bind it to the RMI registry.
+
+Example:
+```java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            HelloImpl obj = new HelloImpl();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.bind("Hello", obj);
+            System.out.println("Server ready");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+4. **Create Client**:
+   - Look up the remote object in the RMI registry.
+   - Invoke methods on the remote object.
+
+Example:
+```java
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            Hello stub = (Hello) registry.lookup("Hello");
+            System.out.println("Response from server: " + stub.sayHello());
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+These are the basic steps for creating a simple client/server application using RMI in Java. The server provides a remote object, and the client can access and interact with it.
+  
 4. Discuss the concepts of stubs and skeletons in RMI communication.
 5. How does RMI handle remote object activation and garbage collection?
 
@@ -301,6 +389,69 @@ In summary, Type 1 uses ODBC, Type 2 uses native APIs, Type 3 goes through a mid
 
 8. **Development Tools and Support**: Servlet development benefits from a rich ecosystem of development tools and community support, streamlining the development process and enhancing productivity.
 
-In summary, servlets offer improved performance, resource management, state handling, flexibility, security, integration capabilities, and development support compared to traditional CGI scripts.
+HTTP requests and responses involve various methods to transmit information between clients and servers. Here are some commonly used methods:
+
+### HTTP Request Methods:
+1. **GET**:
+   - Requests data from a specified resource.
+   - Parameters are sent in the URL.
+   - Generally used for retrieving data.
+
+2. **POST**:
+   - Submits data to be processed to a specified resource.
+   - Parameters are sent in the request body.
+   - Used for creating or updating resources.
+
+3. **PUT**:
+   - Uploads a representation of the specified resource.
+   - Used for updating or creating a resource.
+
+4. **DELETE**:
+   - Deletes the specified resource.
+   - Used for deleting resources.
+
+5. **HEAD**:
+   - Similar to GET but without the response body.
+   - Used to retrieve meta-information about the resource.
+
+6. **OPTIONS**:
+   - Returns the HTTP methods supported by the server for the specified URL.
+   - Used for determining the communication options for the target resource.
+
+7. **PATCH**:
+   - Applies partial modifications to a resource.
+   - Used for modifying part of the resource.
+
+### HTTP Response Status Codes:
+HTTP responses include status codes that indicate the result of the request. Some common status codes include:
+
+1. **200 OK**:
+   - The request has succeeded.
+
+2. **201 Created**:
+   - The request has been fulfilled, and a new resource is created.
+
+3. **400 Bad Request**:
+   - The server cannot process the request due to a client error (e.g., malformed syntax).
+
+4. **401 Unauthorized**:
+   - The request requires user authentication.
+
+5. **404 Not Found**:
+   - The server cannot find the requested resource.
+
+6. **500 Internal Server Error**:
+   - The server encountered an unexpected condition that prevented it from fulfilling the request.
+
+### Headers:
+HTTP requests and responses also include headers, which contain additional information about the request or response. Common headers include:
+
+- **Content-Type**: Specifies the media type of the resource.
+- **Content-Length**: Specifies the size of the resource in bytes.
+- **Cache-Control**: Specifies caching directives.
+- **User-Agent**: Specifies information about the user agent (e.g., browser) making the request.
+- **Location**: Specifies the URL for redirection in response to a POST or PUT request.
+
+These methods and status codes play crucial roles in facilitating communication between clients and servers over the HTTP protocol.
 
 
