@@ -1,10 +1,15 @@
  Unit I: Introduction to Cyber Security:
 
 1. **Define the CIA Triad and explain its significance in cybersecurity.**
-   - The CIA Triad stands for Confidentiality, Integrity, and Availability. It is a foundational concept in cybersecurity that represents three core principles of information security. Confidentiality ensures that information is accessible only to authorized individuals or entities, integrity ensures that data remains accurate and trustworthy throughout its lifecycle, and availability ensures that information and systems are accessible and usable when needed. The CIA Triad provides a framework for designing and implementing security controls to protect against a wide range of threats and vulnerabilities.
+   - The CIA Triad stands for Confidentiality, Integrity, and Availability. 
+It is a foundational concept in cybersecurity that represents three core principles of information security. 
+Confidentiality ensures that information is accessible only to authorized individuals or entities, integrity ensures that data remains 
+accurate and trustworthy throughout its lifecycle, and availability ensures that information and systems are accessible and usable when needed. 
+The CIA Triad provides a framework for designing and implementing security controls to protect against a wide range of threats and vulnerabilities.
 
 2. **Discuss the layers of security in a computer system and their functions.**
-   - Computer systems typically have multiple layers of security, each serving a specific function to protect against different types of threats. These layers include:
+   - Computer systems typically have multiple layers of security, each serving a specific function to protect against different types of threats. 
+These layers include:
      - Physical security: Protects hardware and infrastructure from physical threats such as theft, vandalism, or natural disasters.
      - Network security: Secures data during transmission over networks, using technologies such as firewalls, encryption, and intrusion detection/prevention systems.
      - Operating system security: Ensures the security of the underlying software platform, including user authentication, access control, and security patches.
@@ -12,8 +17,14 @@
      - Data security: Focuses on protecting sensitive data from unauthorized access, disclosure, or modification, using encryption, access controls, and data loss prevention measures.
 
 3. **What are the differences between active and passive cyber attacks? Provide examples of each.**
-   - Active cyber attacks involve direct actions by an attacker to compromise or disrupt a target system. Examples include malware infections, denial-of-service (DoS) attacks, and social engineering attacks such as phishing or spear phishing.
-   - Passive cyber attacks, on the other hand, involve monitoring or intercepting data without directly affecting the target system. Examples include eavesdropping on network communications (passive sniffing), capturing sensitive information such as passwords or credit card numbers (packet sniffing), or conducting reconnaissance to gather information about potential vulnerabilities or targets (passive scanning).
+   - Active cyber attacks involve direct actions by an attacker to compromise or disrupt a target system. 
+Examples include malware infections, denial-of-service (DoS) attacks, 
+and social engineering attacks such as phishing or spear phishing.
+   - Passive cyber attacks, on the other hand, involve monitoring or
+intercepting data without directly affecting the target system.
+Examples include eavesdropping on network communications (passive sniffing), 
+capturing sensitive information such as passwords or credit card numbers (packet sniffing), 
+or conducting reconnaissance to gather information about potential vulnerabilities or targets (passive scanning).
 
 4. **Explain the concept of IP spoofing and how it can be mitigated.**
    - IP spoofing is a technique used by attackers to falsify the source IP address of network packets, making them appear to originate from a trusted source or a different location than their actual source. This can be used to conduct various types of attacks, such as denial-of-service (DoS) attacks, distributed denial-of-service (DDoS) attacks, or man-in-the-middle (MITM) attacks. IP spoofing can be mitigated by implementing measures such as:
